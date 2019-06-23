@@ -20,9 +20,10 @@ Select the vaults you want to report on:
 
 ```
 vaults = [
-    'apache-auth', 'apache-badbots', 'apache-botsearch', 'apache-fakegooglebot',
-    'apache-modsecurity', 'apache-nohome', 'apache-nokiddies', 'apache-nokiddies-2',
-    'apache-noscript', 'apache-overflows', 'apache-shellshock', 'sshd', 'sshd-ddos'
+    'apache-auth', 'apache-badbots', 'apache-botsearch',
+    'apache-fakegooglebot', 'apache-modsecurity', 'apache-nohome',
+    'apache-noscript', 'apache-overflows', 'apache-shellshock',
+    'php-url-fopen', 'sshd'
 ]
 ```
 
