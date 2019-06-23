@@ -18,10 +18,10 @@ def compile_status(vaults):
         current_banned_count = 0
         total_banned_count = 0
 
-        current_failed = re.search(r'Currently failed:(.*\b)', vault_status, re.IGNORECASE | re.MULTILINE)
-        total_failed = re.search(r'Total failed:(.*\b)', vault_status, re.IGNORECASE | re.MULTILINE)
-        current_banned = re.search(r'Currently banned:(.*\b)', vault_status, re.IGNORECASE | re.MULTILINE)
-        total_banned = re.search(r'Total banned:(.*\b)', vault_status, re.IGNORECASE | re.MULTILINE)
+        current_failed = re.search(r"Currently failed:(.*\b)", vault_status, re.IGNORECASE | re.MULTILINE)
+        total_failed = re.search(r"Total failed:(.*\b)", vault_status, re.IGNORECASE | re.MULTILINE)
+        current_banned = re.search(r"Currently banned:(.*\b)", vault_status, re.IGNORECASE | re.MULTILINE)
+        total_banned = re.search(r"Total banned:(.*\b)", vault_status, re.IGNORECASE | re.MULTILINE)
 
         if current_failed:
             current_failed_count = current_failed.group(1).strip()
