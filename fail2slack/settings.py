@@ -60,12 +60,18 @@ class Settings:
 
         args = parser.parse_args()
 
-        if validators.url(args.webhook):
-            self.set_webhook_url(args.webhook)
-        else:
-            sys.end()
+        if args.webhook:
+            if validators.url(args.webhook):
+                self.set_webhook_url(args.webhook)
+            else:
+                sys.exit("Webhook value is not a value URL.")
 
-        if isinstance(args.delivery, int):
+        if 0 <= args.delivery <= 1:
             self.set_delivery_method(args.delivery)
+        else:
+            sys.exit("Delivery method should be 0 (Print) or 1 (Slack)")
 
-        self.set_jails(args.jails)
+        if isinstance(args.jails, list):
+            self.set_jails(args.jails)
+        else:
+            sys.exit("One or more Jails are required.")

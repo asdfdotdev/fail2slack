@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 #
 # fail2slack
-# copyright 2018-present Chris Carlevato (https://github.com/asdfdotdev)
-# license http://www.gnu.org/licenses/gpl-2.0.html
+#
+# Copyright 2018-present Chris Carlevato (https://github.com/asdfdotdev)
+# License http://www.gnu.org/licenses/gpl-2.0.html
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -13,7 +14,6 @@
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
-#
 
 import sys
 import jails

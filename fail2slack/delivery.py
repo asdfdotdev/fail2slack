@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import sys
+
 
 class Delivery:
 
@@ -11,7 +13,7 @@ class Delivery:
         message = self.__generate_message(self, jail_data)
 
         if 1 == self._delivery_method:
-            self.__slack_output(self, self.webhook_url, message)
+            self.__slack_output(self, message)
         else:
             self.__print_output(self, message)
 
@@ -39,10 +41,5 @@ class Delivery:
             headers={'Content-Type': 'application/json'}
         )
 
-        # todo:replace with proper error handling
-        # if response.status_code != 200:
-        #     now = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
-        #
-        #     f = open('fail2slack.log','a')
-        #     f.write('\n' + now + ' -- Slack webhook request error, status: {0}, message: {1}'.format(response.status_code, response.text))
-        #     f.close()
+        if response.status_code != 200:
+            sys.exit("Slack webhook connection failed with error: {0} ({1})".format(response.text, response.status_code))
