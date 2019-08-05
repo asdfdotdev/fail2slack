@@ -1,6 +1,6 @@
 **/.DS_Store
 .idea
-*config.py
 **/*.log
 __pycache__/
 **/*.pyc
+**/config.yml

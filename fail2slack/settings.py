@@ -1,0 +1,71 @@
+# -*- coding: utf-8 -*-
+
+import argparse
+import sys
+import validators
+
+
+class Settings:
+
+    def __init__(self, args):
+        self._webhook_url = ''
+        self._jails = []
+        self._delivery_method = 0
+        self.process_passed_args(args)
+
+    def set_webhook_url(self, url):
+        self._webhook_url = url
+
+    def get_webhook_url(self):
+        return self._webhook_url
+
+    def set_jails(self, jails):
+        self._jails = jails
+
+    def get_jails(self):
+        return self._jails
+
+    def set_delivery_method(self, method):
+        self._delivery_method = method
+
+    def get_delivery_method(self):
+        return self._delivery_method
+
+    def process_passed_args(self, args):
+
+        parser = argparse.ArgumentParser()
+
+        parser.add_argument(
+            "-w",
+            "--webhook",
+            type=str,
+            default="",
+            help="Slack webhook URL. Required if delivery method is 1."
+        )
+
+        parser.add_argument(
+            "-d",
+            "--delivery",
+            type=int,
+            default=0,
+            help="Delivery method: 0 = print, 1 = Slack webhook."
+        )
+
+        parser.add_argument(
+            "-j",
+            "--jails",
+            nargs="+",
+            help="Jails to include in status report. Required."
+        )
+
+        args = parser.parse_args()
+
+        if validators.url(args.webhook):
+            self.set_webhook_url(args.webhook)
+        else:
+            sys.end()
+
+        if isinstance(args.delivery, int):
+            self.set_delivery_method(args.delivery)
+
+        self.set_jails(args.jails)
