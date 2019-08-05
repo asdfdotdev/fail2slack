@@ -25,23 +25,10 @@ def main():
     settings = Settings(sys.argv)
     delivery = Delivery(settings)
 
-    # delivery.output(
-    #     jails.get_jails_status(
-    #         settings.get_jails()
-    #     )
-    # )
-
-    # todo: delete, just for message testing
     delivery.output(
-        [
-            ['Lorem', 11, 111, 22, 222],
-            ['ipsum', 22, 222, 33, 333],
-            ['dolor', 33, 333, 44, 444],
-            ['sit', 44, 444, 55, 555],
-            ['amet', 55, 555, 66, 666],
-            ['consectetuer', 66, 666, 77, 777],
-            ['adipiscin', 88, 888, 99, 999],
-        ]
+        jails.get_jails_status(
+            settings.get_jails()
+        )
     )
 
 
