@@ -22,7 +22,8 @@ from delivery import Delivery
 
 
 def main():
-    settings = Settings(sys.argv)
+    settings = Settings()
+    settings.process_args(sys.argv)
     delivery = Delivery(settings)
 
     delivery.output(

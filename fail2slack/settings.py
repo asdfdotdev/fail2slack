@@ -6,32 +6,22 @@ import validators
 
 
 class Settings:
+    """
+    Accepts provided settings, validate, and prepare them for use.
+    """
 
-    def __init__(self, args):
+    def __init__(self):
         self._webhook_url = ''
         self._jails = []
         self._delivery_method = 0
-        self.process_passed_args(args)
 
-    def set_webhook_url(self, url):
-        self._webhook_url = url
+    def process_args(self, args):
+        """
+        Create dict of setting values from provided args.
 
-    def get_webhook_url(self):
-        return self._webhook_url
-
-    def set_jails(self, jails):
-        self._jails = jails
-
-    def get_jails(self):
-        return self._jails
-
-    def set_delivery_method(self, method):
-        self._delivery_method = method
-
-    def get_delivery_method(self):
-        return self._delivery_method
-
-    def process_passed_args(self, args):
+        :param args: sys.argv containing provided values
+        :return: void
+        """
 
         parser = argparse.ArgumentParser()
 
@@ -60,18 +50,58 @@ class Settings:
 
         args = parser.parse_args()
 
-        if args.webhook:
-            if validators.url(args.webhook):
-                self.set_webhook_url(args.webhook)
+        self.validate_settings({
+            "delivery" : args.delivery,
+            "jails" : args.jails,
+            "webhook" : args.webhook,
+        })
+
+    def validate_settings(self, settings):
+        """
+        Validate settings values, exit with appropriate warning when settings
+        won't allow us to continue.
+        :param settings: Dict of settings.
+        :return: void
+        """
+
+        webhook = settings.get('webhook')
+        delivery = settings.get('delivery')
+        jails = settings.get('jails')
+
+        if webhook:
+            if validators.url(webhook):
+                self.set_webhook_url(webhook)
             else:
                 sys.exit("Webhook value is not a value URL.")
 
-        if 0 <= args.delivery <= 1:
-            self.set_delivery_method(args.delivery)
+        if 0 <= delivery <= 1:
+            self.set_delivery_method(delivery)
         else:
             sys.exit("Delivery method should be 0 (Print) or 1 (Slack)")
 
-        if isinstance(args.jails, list):
-            self.set_jails(args.jails)
+        if jails:
+            self.set_jails(jails)
         else:
             sys.exit("One or more Jails are required.")
+
+    #
+    # Setters & Getters
+    #
+
+    def set_webhook_url(self, url):
+        self._webhook_url = url
+
+    def get_webhook_url(self):
+        return self._webhook_url
+
+    def set_jails(self, jails):
+        self._jails = jails
+
+    def get_jails(self):
+        return self._jails
+
+    def set_delivery_method(self, method):
+        self._delivery_method = method
+
+    def get_delivery_method(self):
+        return self._delivery_method
