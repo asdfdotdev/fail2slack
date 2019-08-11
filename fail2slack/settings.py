@@ -7,13 +7,13 @@ import validators
 
 class Settings:
     """
-    Accepts provided settings, validate, and prepare them for use.
+    Accept settings from user, validate values, and make available for use.
     """
 
     def __init__(self):
-        self._webhook_url = ''
-        self._jails = []
-        self._delivery_method = 0
+        self._webhook_url = None
+        self._jails = None
+        self._delivery_method = None
 
     def process_args(self, args):
         """
@@ -83,6 +83,9 @@ class Settings:
             self.set_jails(jails)
         else:
             sys.exit("One or more Jails are required.")
+
+        if delivery == 1 and not webhook:
+            sys.exit("Webhook required for delivery setting 1 (Slack)")
 
     #
     # Setters & Getters

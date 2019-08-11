@@ -10,15 +10,25 @@ class Delivery:
         self._webhook_url = settings.get_webhook_url()
 
     def output(self, jail_data):
-        message = self.__generate_message(self, jail_data)
+        """
+        Output update message based on current settings.
+        :param jail_data: array of jail data (failed/banned)
+        :return: void
+        """
+        message = self.generate_message(self, jail_data)
 
         if 1 == self._delivery_method:
-            self.__slack_output(self, message)
+            self.slack_output(self, message)
         else:
-            self.__print_output(self, message)
+            self.print_output(self, message)
 
     @staticmethod
-    def __generate_message(self, jail_data):
+    def generate_message(self, jail_data):
+        """
+        Generate update message using jail data.
+        :param jail_data: array of jail data (failed/banned)
+        :return: string formatting update message
+        """
         message = ''
 
         for jail in jail_data:
@@ -27,11 +37,21 @@ class Delivery:
         return message
 
     @staticmethod
-    def __print_output(self, message):
+    def print_output(self, message):
+        """
+        Output message to a stream, or to sys.stdout by default.
+        :param message: string message
+        :return: void
+        """
         print(message)
 
     @staticmethod
-    def __slack_output(self, message):
+    def slack_output(self, message):
+        """
+        Send message to slack via webhook.
+        :param message: string message
+        :return: void
+        """
         import requests
         import json
 
