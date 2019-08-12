@@ -16,9 +16,9 @@
 # GNU General Public License for more details.
 
 import sys
-import jails
-from settings import Settings
-from delivery import Delivery
+from .jails import *
+from .settings import Settings
+from .delivery import Delivery
 
 
 def main():
@@ -27,7 +27,7 @@ def main():
     delivery = Delivery(settings)
 
     delivery.output(
-        jails.get_jails_status(
+        get_jails_status(
             settings.get_jails()
         )
     )

@@ -20,8 +20,10 @@ setup(
     url='https://github.com/asdfdotdev/fail2slack',
     classifiers=[
         "Programming Language :: Python :: 3",
-        "Operating System :: OS Independent",
-        "License :: OSI Approved :: "
-        "GNU General Public License v2 (GPLv2)",
+    ],
+    install_requires=[
+        'argparse==1.4.0',
+        'requests==2.22.0',
+        'validators==0.13.0',
     ],
 )
