@@ -1,6 +1,7 @@
 **/.DS_Store
-.idea
-*config.py
-**/*.log
-__pycache__/
-**/*.pyc
+.idea/
+**/__pycache__/
+**/build/
+**/dist/
+**/*.egg-info/
+.coverage

@@ -1,46 +1,42 @@
-# fail2slack
+# fail2slack.py
 
-A friendly little script that can package up your fail2ban vault statuses and send them to you over slack.
+[![Build Status](https://travis-ci.org/asdfdotdev/fail2slack.svg?branch=master)](https://travis-ci.org/asdfdotdev/fail2slack) [![codecov](https://codecov.io/gh/asdfdotdev/fail2slack/branch/master/graph/badge.svg)](https://codecov.io/gh/asdfdotdev/fail2slack) 
 
-## Setup
+A Python package for sending fail2ban jail status updates to Slack.
 
-Create fail2slackconfig.py
+## Compatibility
 
-```
-$ cp fail2slackconfig.dist.py fail2slackconfig.py
-``` 
+[![Python Version](https://img.shields.io/pypi/pyversions/fail2slack)](https://pypi.org/project/fail2slack) [![Module Version](https://img.shields.io/pypi/v/fail2slack)](https://pypi.org/project/fail2slack)
 
-[Setup your Slack webhook](https://api.slack.com/incoming-webhooks) and add it to the config file:
+fail2slack is developed for, and tested with, recent versions of Python.
 
-```
-webhook_url = 'https://hooks.slack.com/YOUR/WEBHOOK/URL'
-```
-
-Select the vaults you want to report on:
+## Installation
 
 ```
-vaults = [
-    'apache-auth', 'apache-badbots', 'apache-botsearch',
-    'apache-fakegooglebot', 'apache-modsecurity', 'apache-nohome',
-    'apache-noscript', 'apache-overflows', 'apache-shellshock',
-    'php-url-fopen', 'sshd'
-]
+pip install fail2slack
 ```
+
+Install fail2slack using the Python package installer.
 
 ## Usage
 
-fail2slack should play nicely with Python v2 & v3. It can be run as a file or from the shell.
-
-
-## Output
-
-The current failed/banned counts will be compiled for all selected vaults and sent via the webhook.
-
 ```
-vault-name
-    Failed: CURRENT (TOTAL), Banned: CURRENT (TOTAL)
+usage: fail2slack [-h] [-w WEBHOOK] [-d DELIVERY] [-j JAILS [JAILS ...]]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -w WEBHOOK, --webhook WEBHOOK
+                        Slack webhook URL. Required if delivery method is 1.
+  -d DELIVERY, --delivery DELIVERY
+                        Delivery method: 0 = print, 1 = Slack webhook.
+  -j JAILS [JAILS ...], --jails JAILS [JAILS ...]
+                        Jails to include in status report. Required.
 ```
 
-## Providing Feedback
+## Tests
 
-Please reference our [code of conduct](./.github/CODE_OF_CONDUCT.md) and [contributing](./.github/CONTRIBUTING.md) guides.
+For instructions on running test check out the [README](./test#readme).
+
+## Contributing
+
+If you'd like to contribute to fail2slack please reference our [code of conduct](./.github/CODE_OF_CONDUCT.md) and [contributing](./.github/CONTRIBUTING.md) guides.
