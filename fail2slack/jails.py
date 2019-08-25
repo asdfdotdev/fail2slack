@@ -18,13 +18,15 @@ class Jails:
 
         for jail in self._jails:
             try:
-                self.prepare_jails_data(
-                    jail,
-                    subprocess.check_output(
-                        "fail2ban-client status " + jail,
-                        shell=True,
-                        stderr=subprocess.DEVNULL
-                    ).decode('utf-8')
+                jails_status.append(
+                    self.prepare_jails_data(
+                        jail,
+                        subprocess.check_output(
+                            "fail2ban-client status " + jail,
+                            shell=True,
+                            stderr=subprocess.DEVNULL
+                        ).decode('utf-8')
+                    )
                 )
             except subprocess.CalledProcessError:
                 sys.exit("fail2ban-client status failed. Confirm it is available and you have permission to use it.")

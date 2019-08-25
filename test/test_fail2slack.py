@@ -129,7 +129,7 @@ class TestSettings(unittest.TestCase):
         ]
 
         test_message = delivery.generate_message([test_data])
-        expected_message = "Stats for {0}\n".format(test_settings.get_identifier()) + \
+        expected_message = "*Stats for {0}*\n".format(test_settings.get_identifier()) + \
                            ">*{0}*\n>\tFailed: {1} ({2}), Banned: {3} ({4})\n".format(*test_data)
 
         self.assertEqual(test_message, expected_message)

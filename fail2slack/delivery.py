@@ -16,7 +16,7 @@ class Delivery:
         :param jail_data: array of jail data (failed/banned)
         :return: void
         """
-        message = self.generate_message(self, jail_data)
+        message = self.generate_message(jail_data)
 
         if 1 == self._delivery_method:
             self.slack_output(self, message)
@@ -32,7 +32,7 @@ class Delivery:
         message = ''
 
         if self._identifier:
-            message = 'Stats for {0}\n'.format(self._identifier)
+            message += '*Stats for {0}*\n'.format(self._identifier)
 
         for jail in jail_data:
             message += ">*{0}*\n>\tFailed: {1} ({2}), Banned: {3} ({4})\n".format(*jail)
