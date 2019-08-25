@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import argparse
+import socket
 import sys
 import validators
 
@@ -14,6 +15,7 @@ class Settings:
         self._webhook_url = None
         self._jails = None
         self._delivery_method = None
+        self._identifier = None
 
     def process_args(self, args):
         """
@@ -48,12 +50,20 @@ class Settings:
             help="Jails to include in status report. Required."
         )
 
+        parser.add_argument(
+            "-i",
+            "--identifier",
+            type=str,
+            help="Update identifier. STRING of identifier to use. Default is hostname."
+        )
+
         args = parser.parse_args()
 
         self.validate_settings({
+            "webhook" : args.webhook,
             "delivery" : args.delivery,
             "jails" : args.jails,
-            "webhook" : args.webhook,
+            "identifier" : args.identifier
         })
 
     def validate_settings(self, settings):
@@ -67,6 +77,7 @@ class Settings:
         webhook = settings.get('webhook')
         delivery = settings.get('delivery')
         jails = settings.get('jails')
+        identifier = settings.get('identifier')
 
         if webhook:
             if validators.url(webhook):
@@ -84,6 +95,11 @@ class Settings:
         else:
             sys.exit("One or more Jails are required.")
 
+        if identifier:
+            self.set_identifier(identifier)
+        else:
+            self.set_identifier(socket.gethostname())
+
         if delivery == 1 and not webhook:
             sys.exit("Webhook required for delivery setting 1 (Slack)")
 
@@ -97,14 +113,21 @@ class Settings:
     def get_webhook_url(self):
         return self._webhook_url
 
+    def set_delivery_method(self, method):
+        self._delivery_method = method
+
+    def get_delivery_method(self):
+        return self._delivery_method
+
     def set_jails(self, jails):
         self._jails = jails
 
     def get_jails(self):
         return self._jails
 
-    def set_delivery_method(self, method):
-        self._delivery_method = method
+    def set_identifier(self, identifier):
+        self._identifier = identifier
 
-    def get_delivery_method(self):
-        return self._delivery_method
+    def get_identifier(self):
+        return self._identifier
+
