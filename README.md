@@ -39,8 +39,8 @@ optional arguments:
   -j JAILS [JAILS ...], --jails JAILS [JAILS ...]
                         Jails to include in status report. Required.
   -i IDENTIFIER, --identifier IDENTIFIER
-                        Update identifier. 0 = exclude from message, STRING of
-                        identifier to use. Default is hostname.
+                        Update identifier. STRING of identifier to use.
+                        Default is hostname.
 ```
 
 ## Tests

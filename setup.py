@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='fail2slack',
-    version='0.2.0',
+    version='0.2.1',
     description='Send fail2ban jail status updates to Slack.',
     long_description=long_description,
     long_description_content_type="text/markdown",
