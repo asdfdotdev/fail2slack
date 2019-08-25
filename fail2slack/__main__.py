@@ -25,11 +25,10 @@ def main():
     settings = Settings()
     settings.process_args(sys.argv)
     delivery = Delivery(settings)
+    jails = Jails(settings)
 
     delivery.output(
-        get_jails_status(
-            settings.get_jails()
-        )
+        jails.get_jails_status()
     )
 
 

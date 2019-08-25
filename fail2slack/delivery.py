@@ -8,6 +8,7 @@ class Delivery:
     def __init__(self, settings):
         self._delivery_method = settings.get_delivery_method()
         self._webhook_url = settings.get_webhook_url()
+        self._identifier = settings.get_identifier()
 
     def output(self, jail_data):
         """
@@ -15,14 +16,13 @@ class Delivery:
         :param jail_data: array of jail data (failed/banned)
         :return: void
         """
-        message = self.generate_message(self, jail_data)
+        message = self.generate_message(jail_data)
 
         if 1 == self._delivery_method:
             self.slack_output(self, message)
         else:
             self.print_output(self, message)
 
-    @staticmethod
     def generate_message(self, jail_data):
         """
         Generate update message using jail data.
@@ -31,8 +31,11 @@ class Delivery:
         """
         message = ''
 
+        if self._identifier:
+            message += '*Stats for {0}*\n'.format(self._identifier)
+
         for jail in jail_data:
-            message += "*{0}*\n\tFailed: {1} ({2}), Banned: {3} ({4})\n".format(*jail)
+            message += ">*{0}*\n>\tFailed: {1} ({2}), Banned: {3} ({4})\n".format(*jail)
 
         return message
 
