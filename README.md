@@ -1,6 +1,6 @@
-# fail2slack.py
+<p align="center"><img src="https://raw.githubusercontent.com/asdfdotdev/fail2slack/development/.github/images/logo.png" width="400"></p>
 
-[![Build Status](https://travis-ci.org/asdfdotdev/fail2slack.svg?branch=master)](https://travis-ci.org/asdfdotdev/fail2slack) [![codecov](https://codecov.io/gh/asdfdotdev/fail2slack/branch/master/graph/badge.svg)](https://codecov.io/gh/asdfdotdev/fail2slack)  [![downloads](https://img.shields.io/pypi/dm/fail2slack)](https://pypi.org/project/fail2slack)
+[![Build Status](https://travis-ci.org/asdfdotdev/fail2slack.svg?branch=master)](https://travis-ci.org/asdfdotdev/fail2slack) [![codecov](https://codecov.io/gh/asdfdotdev/fail2slack/branch/development/graph/badge.svg)](https://codecov.io/gh/asdfdotdev/fail2slack)  [![downloads](https://img.shields.io/pypi/dm/fail2slack)](https://pypi.org/project/fail2slack)
 
 fail2slack lets you send fail2ban jail status updates to Slack with ease.
 
@@ -22,7 +22,7 @@ pip install fail2slack
 
 Install fail2slack using the Python package installer.
 
-[Dependencies for using fail2slack are available in the requirements file.](https://github.com/asdfdotdev/fail2slack/blob/master/requirements.txt)
+[Dependencies for using fail2slack are available in the requirements file.](https://github.com/asdfdotdev/fail2slack/blob/development/requirements.txt)
 
 ## Usage
 
@@ -43,9 +43,13 @@ optional arguments:
                         Default is hostname.
 ```
 
+### Result
+
+<p style="padding-bottom:20px"><img src="https://raw.githubusercontent.com/asdfdotdev/fail2slack/development/.github/images/screenshot.png" width="350"></p>
+
 ## Tests
 
-For instructions on running test check out the [README](https://github.com/asdfdotdev/fail2slack/tree/master/test#readme).
+For instructions on running test check out the [README](https://github.com/asdfdotdev/fail2slack/tree/development/test#readme).
 
 [Test coverage reports are available on Codecov.](https://codecov.io/gh/asdfdotdev/fail2slack)
 
@@ -53,4 +57,4 @@ For instructions on running test check out the [README](https://github.com/asdfd
 
 Feedback, bug reports, feature requests, and pull requests are welcome!
 
-If you'd like to contribute to fail2slack please reference our [code of conduct](https://github.com/asdfdotdev/fail2slack/blob/master/.github/CODE_OF_CONDUCT.md) and [contributing](https://github.com/asdfdotdev/fail2slack/blob/master/.github/CONTRIBUTING.md) guides.
+If you'd like to contribute to fail2slack please reference our [code of conduct](https://github.com/asdfdotdev/fail2slack/blob/development/.github/CODE_OF_CONDUCT.md) and [contributing](https://github.com/asdfdotdev/fail2slack/blob/development/.github/CONTRIBUTING.md) guides.
