@@ -2,13 +2,10 @@ import io
 import random
 import socket
 import string
-import unittest
 import unittest.mock
-import fail2slack
 from fail2slack.settings import Settings
 from fail2slack.delivery import Delivery
 from fail2slack.jails import Jails
-
 
 class TestSettings(unittest.TestCase):
 
@@ -203,7 +200,6 @@ class TestSettings(unittest.TestCase):
         test_response = test_jails.prepare_jails_data(test_jail, test_status)
 
         self.assertEqual(test_response, test_data)
-
 
 if __name__ == '__main__':
     unittest.main()

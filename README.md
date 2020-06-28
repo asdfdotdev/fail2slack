@@ -1,6 +1,6 @@
 <p align="center"><img src="https://raw.githubusercontent.com/asdfdotdev/fail2slack/development/.github/images/logo.png" width="400"></p>
 
-[![Build Status](https://travis-ci.org/asdfdotdev/fail2slack.svg?branch=master)](https://travis-ci.org/asdfdotdev/fail2slack) [![codecov](https://codecov.io/gh/asdfdotdev/fail2slack/branch/development/graph/badge.svg)](https://codecov.io/gh/asdfdotdev/fail2slack)  [![downloads](https://img.shields.io/pypi/dm/fail2slack)](https://pypi.org/project/fail2slack)
+[![Build Status](https://travis-ci.org/asdfdotdev/fail2slack.svg?branch=main)](https://travis-ci.org/asdfdotdev/fail2slack) [![codecov](https://codecov.io/gh/asdfdotdev/fail2slack/branch/development/graph/badge.svg)](https://codecov.io/gh/asdfdotdev/fail2slack)  [![downloads](https://img.shields.io/pypi/dm/fail2slack)](https://pypi.org/project/fail2slack)
 
 fail2slack lets you send fail2ban jail status updates to Slack with ease.
 
@@ -10,7 +10,7 @@ fail2slack lets you send fail2ban jail status updates to Slack with ease.
 
 fail2slack is developed for and tested with recent versions of Python, including:
 
-- 3.6, 3.7, 3.7.4, 3.8-dev
+- 3.6, 3.7, 3.7.7, 3.8
 
 [Browse our build history at Travis-CI.](https://travis-ci.org/asdfdotdev/fail2slack)
 
