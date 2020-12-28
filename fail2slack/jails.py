@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+Jails class for fail2slack module
+"""
 
 import re
 import subprocess
@@ -14,6 +17,10 @@ class Jails:
         self._jails = settings.get_jails()
 
     def get_jails_status(self):
+        """
+        Retrieve output from fail2slack-client command for processing
+        :return: array
+        """
         jails_status = []
 
         for jail in self._jails:
@@ -33,7 +40,14 @@ class Jails:
 
         return jails_status
 
-    def prepare_jails_data(self, jail, jail_output):
+    @staticmethod
+    def prepare_jails_data(jail, jail_output):
+        """
+        Prepare jails output for delivery by removing needed values
+        :param jail: string jail name
+        :param jail_output: string jail status output
+        :return: array of prepared values
+        """
         current_failed_count = 0
         total_failed_count = 0
         current_banned_count = 0
