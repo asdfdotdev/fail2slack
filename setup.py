@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='fail2slack',
-    version='0.2.2',
+    version='0.3.0',
     description='Send fail2ban jail status updates to Slack.',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -23,13 +23,14 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Topic :: Security",
         "Topic :: System",
         "Topic :: Utilities",
     ],
     install_requires=[
         'argparse==1.4.0',
-        'requests==2.22.0',
-        'validators==0.13.0',
+        'requests==2.25.1',
+        'validators==0.18.2',
     ],
 )
