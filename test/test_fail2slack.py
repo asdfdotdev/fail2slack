@@ -134,7 +134,7 @@ class TestSettings(unittest.TestCase):
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def test_output_print(self, mock_stdout):
         test_message = ''.join(random.choices(string.ascii_uppercase + string.digits, k=50))
-        Delivery.print_output(self, test_message)
+        Delivery.print_output(test_message)
 
         self.assertEqual(mock_stdout.getvalue().rstrip(), test_message.rstrip())
 

@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
+"""
+Delivery class for fail2slack module
+"""
 
 import sys
+import json
+import requests
 
 
 class Delivery:
+    """
+    Delivers update containing current information about fail2ban jails
+    """
 
     def __init__(self, settings):
         self._delivery_method = settings.get_delivery_method()
-        self._webhook_url = settings.get_webhook_url()
         self._identifier = settings.get_identifier()
+        self.webhook_url = settings.get_webhook_url()
 
     def output(self, jail_data):
         """
@@ -18,10 +26,10 @@ class Delivery:
         """
         message = self.generate_message(jail_data)
 
-        if 1 == self._delivery_method:
-            self.slack_output(self, message)
+        if self._delivery_method == 1:
+            self.slack_output(message, self)
         else:
-            self.print_output(self, message)
+            self.print_output(message)
 
     def generate_message(self, jail_data):
         """
@@ -40,7 +48,7 @@ class Delivery:
         return message
 
     @staticmethod
-    def print_output(self, message):
+    def print_output(message):
         """
         Output message to a stream, or to sys.stdout by default.
         :param message: string message
@@ -49,17 +57,15 @@ class Delivery:
         print(message)
 
     @staticmethod
-    def slack_output(self, message):
+    def slack_output(message, self):
         """
         Send message to slack via webhook.
         :param message: string message
         :return: void
         """
-        import requests
-        import json
 
         response = requests.post(
-            self._webhook_url,
+            self.webhook_url,
             data=json.dumps({'text': message}),
             headers={'Content-Type': 'application/json'}
         )

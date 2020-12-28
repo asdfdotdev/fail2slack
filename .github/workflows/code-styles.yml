@@ -1,0 +1,47 @@
+name: Code Styles
+
+on:
+  push:
+    branches:
+      - main
+      - development
+  pull_request:
+    types: [closed]
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  code-styles:
+    name: Python ${{ matrix.python-version }} on ${{ matrix.operating-system }}
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        python-version: [ '3.9' ]
+        operating-system: [ ubuntu-20.04 ]
+
+    steps:
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+
+      - name: Checkout fail2slack
+        uses: actions/checkout@v2
+
+      - name: Install Requirements
+        run: |
+          pip install -r requirements.txt
+          pip install pylint
+
+      - name: Log Debug Information
+        run: |
+          echo "$GITHUB_REF"
+          echo "$GITHUB_EVENT_NAME"
+          python --version
+          pip --version
+          pylint --version
+
+      - name: Pylint Code Styles
+        run: |
+          pylint fail2slack/ -r y

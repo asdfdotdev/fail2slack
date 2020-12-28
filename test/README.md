@@ -1,4 +1,4 @@
-# fail2slack.py Tests
+# fail2slack Tests
 
 To run the included tests:
 
@@ -6,4 +6,6 @@ To run the included tests:
 python -m unittest
 ```
 
-[Visit Travis-CI to review the test results in our build history.](https://travis-ci.org/asdfdotdev/fail2slack)
+[Visit GitHub to review our build history.](https://github.com/asdfdotdev/fail2slack/actions)
+
+[Test coverage reports are available on Codecov.](https://codecov.io/gh/asdfdotdev/fail2slack)

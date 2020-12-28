@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+Settings class for fail2slack module
+"""
 
 import argparse
 import socket
@@ -108,26 +111,61 @@ class Settings:
     #
 
     def set_webhook_url(self, url):
+        """
+        Set webhook value
+        :param url: string webhook url
+        :return: void
+        """
         self._webhook_url = url
 
     def get_webhook_url(self):
+        """
+        Get webhook value
+        :return: string
+        """
         return self._webhook_url
 
     def set_delivery_method(self, method):
+        """
+        Set delivery method value
+        :param url: integer delivery method
+        :return: void
+        """
         self._delivery_method = method
 
     def get_delivery_method(self):
+        """
+        Get delivery method value
+        :return: integer
+        """
         return self._delivery_method
 
     def set_jails(self, jails):
+        """
+        Set active jails
+        :param url: string webhook url
+        :return: void
+        """
         self._jails = jails
 
     def get_jails(self):
+        """
+        Get active jails
+        :return: string
+        """
         return self._jails
 
     def set_identifier(self, identifier):
+        """
+        Set server identifier
+        :param identifier: string identifier
+        :return: void
+        """
         self._identifier = identifier
 
     def get_identifier(self):
+        """
+        Get identifier
+        :return: string
+        """
         return self._identifier
-
