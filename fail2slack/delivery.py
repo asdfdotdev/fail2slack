@@ -40,10 +40,10 @@ class Delivery:
         message = ''
 
         if self._identifier:
-            message += '*Stats for {0}*\n'.format(self._identifier)
+            message += f'*Stats for {self._identifier}*\n'
 
         for jail in jail_data:
-            message += ">*{0}*\n>\tFailed: {1} ({2}), Banned: {3} ({4})\n".format(*jail)
+            message += f">*{jail[0]}*\n>\tFailed: {jail[1]} ({jail[2]}), Banned: {jail[3]} ({jail[4]})\n"
 
         return message
 
@@ -71,4 +71,4 @@ class Delivery:
         )
 
         if response.status_code != 200:
-            sys.exit("Slack webhook connection failed with error: {0} ({1})".format(response.text, response.status_code))
+            sys.exit(f"Slack webhook connection failed with error: {response.text} ({response.status_code})")
