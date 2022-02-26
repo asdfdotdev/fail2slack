@@ -10,7 +10,7 @@ fail2slack lets you send fail2ban jail status updates to Slack with ease.
 
 fail2slack is developed for and tested with recent versions of Python, including:
 
-- 3.6, 3.7, 3.7.7, 3.8, 3.9
+- 3.7, 3.7.7, 3.8, 3.9, 3.10
 
 [Browse our build history at GitHub.](https://github.com/asdfdotdev/fail2slack/actions)
 
@@ -27,10 +27,9 @@ Install fail2slack using the Python package installer.
 ## Usage
 
 ```
-usage: __main__.py [-h] [-w WEBHOOK] [-d DELIVERY] [-j JAILS [JAILS ...]]
-                   [-i IDENTIFIER]
+usage: __main__.py [-h] [-w WEBHOOK] [-d DELIVERY] [-j JAILS [JAILS ...]] [-i IDENTIFIER]
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -w WEBHOOK, --webhook WEBHOOK
                         Slack webhook URL. Required if delivery method is 1.
@@ -39,8 +38,7 @@ optional arguments:
   -j JAILS [JAILS ...], --jails JAILS [JAILS ...]
                         Jails to include in status report. Required.
   -i IDENTIFIER, --identifier IDENTIFIER
-                        Update identifier. STRING of identifier to use.
-                        Default is hostname.
+                        Update identifier. STRING of identifier to use. Default is hostname.
 ```
 
 ### Result

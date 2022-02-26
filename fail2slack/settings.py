@@ -4,7 +4,7 @@ Settings class for fail2slack module
 """
 
 import argparse
-import socket
+import platform
 import sys
 import validators
 
@@ -101,7 +101,7 @@ class Settings:
         if identifier:
             self.set_identifier(identifier)
         else:
-            self.set_identifier(socket.gethostname())
+            self.set_identifier(platform.node())
 
         if delivery == 1 and not webhook:
             sys.exit("Webhook required for delivery setting 1 (Slack)")
