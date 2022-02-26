@@ -10,7 +10,7 @@ fail2slack lets you send fail2ban jail status updates to Slack with ease.
 
 fail2slack is developed for and tested with recent versions of Python, including:
 
-- 3.6, 3.7, 3.7.7, 3.8, 3.9
+- 3.7, 3.7.7, 3.8, 3.9, 3.10
 
 [Browse our build history at GitHub.](https://github.com/asdfdotdev/fail2slack/actions)
 
