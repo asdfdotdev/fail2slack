@@ -67,7 +67,8 @@ class Delivery:
         response = requests.post(
             self.webhook_url,
             data=json.dumps({'text': message}),
-            headers={'Content-Type': 'application/json'}
+            headers={'Content-Type': 'application/json'},
+            timeout=120
         )
 
         if response.status_code != 200:
